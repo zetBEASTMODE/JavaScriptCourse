@@ -103,6 +103,13 @@ console.log(counter);
 
 const arr = [1, 2, 3, 6, 8];
 
+arr.sort(compareNum);  //числа по порядку
+console.log(arr);
+
+function compareNum(a, b) {
+    return a - b;
+}
+
 arr.forEach(function(item, i, arr) { //перебирать элементы массива 
     console.log(`${i}: ${item} внутри массива ${arr} `);
 });
@@ -122,6 +129,91 @@ for (let value of arr) {   //перебрать массив
 
 const str = prompt("", "");   //из строки сделать массив
 const products = str.split(", ");
-console.log(products.join('; '));
+products.sort();   //сортирует по порядку (если числа то по первому числу)
+console.log(products.join('; ')); //из массива в строки
 
-const 
+
+const obj = {
+    a: 5,
+    b: 1
+};
+
+const copy = obj; //в переменную кладется ссылка на существующий объект
+
+copy.a = 10; //модифицируем изначальный объект obj (передача по ссылке)
+
+console.log(copy);
+console.log(obj);
+
+function copyy(mainObj) {
+    let objCopy = {};
+
+    let key;
+    for (key in mainObj) {
+        objCopy[key] = mainObj[key]; //поверхностная копия объектов
+    }
+
+    return objCopy;
+}
+
+const numbers = {
+    a: 2,
+    b: 5,
+    c: {
+        x: 7,
+        y: 4
+    }
+};
+
+const newNumbers = copyy(numbers);
+
+newNumbers.a = 10;
+newNumbers.c.x = 10;  //
+
+console.log(newNumbers);
+console.log(numbers);
+
+const add = {
+    d: 17,
+    e: 20
+};
+
+console.log(Object.assign({}, add)); //независимая поверхностная копия объекта
+
+const oldArray = ['a', 'b', 'c'];
+const newArray = oldArray.slice(); //позволяет скопировать старый массив
+
+newArray[1] = 'adadsdasds';
+console.log(newArray);
+console.log(oldArray);
+
+const video = ['youtube', 'vimeo', 'rutube'],
+      blogs = ['wordpress', 'livejournal', 'blogger'],
+      internet = [...video, ...blogs, 'vk', 'facebook']; //оператор разворота (spread)
+
+console.log(internet);
+
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+const numm = [2, 5, 7];
+
+log(...numm);
+
+const array = ["a", "b"];
+
+const newAarray = [...array]; // создание поверхностной копии
+
+const q = {
+    one: 1,
+    two: 2
+};
+
+const newObj = {
+    ...q
+};
+
+console.log(newObj);
