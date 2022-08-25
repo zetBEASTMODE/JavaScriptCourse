@@ -217,3 +217,4 @@ const newObj = {
 };
 
 console.log(newObj);
+
